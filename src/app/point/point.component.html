@@ -1,0 +1,32 @@
+<div class="main-eqp">
+    <div class="edit-col">
+        <div class="edit-row" style="width: 100%;">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="formName" [readonly]="!equipment_id">
+            </mat-form-field>
+        </div>
+        <div class="edit-row">
+            <mat-form-field>
+                <mat-label>Data Type</mat-label>
+                <input matInput [(ngModel)]="formDataType" [readonly]="!equipment_id">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Value</mat-label>
+                <input matInput type="number" [(ngModel)]="formValue" [readonly]="!equipment_id">
+            </mat-form-field>
+        </div>
+        <div class="edit-row">
+            <button mat-raised-button color="primary" (click)="savePoint()" [disabled]="!equipment_id">Save</button>
+            <button mat-raised-button color="warn" [disabled]="!currPoint['_id']"
+                (click)="deletePoint()">Delete</button>
+        </div>
+        <div>
+            <mat-button-toggle-group class="buttons-list" value="Novo">
+                <mat-button-toggle value="Novo" (change)="selectPoint({_id: null})">Novo</mat-button-toggle>
+                <div *ngFor="let point of pointList">
+                    <mat-button-toggle (change)="selectPoint(point)">{{point['name']}}</mat-button-toggle>
+                </div>
+            </mat-button-toggle-group>
+        </div>
+    </div>

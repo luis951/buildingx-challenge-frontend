@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EquipmentService } from './equipment.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'buildingx-challenge-frontend';
+  equipment_id: string = '';
+  delete_equipment: string = '';
 }

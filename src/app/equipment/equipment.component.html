@@ -1,0 +1,24 @@
+<div class="main-eqp">
+    <div class="edit-form">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="formName">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Serial #</mat-label>
+            <input matInput [(ngModel)]="formSerialNumber">
+        </mat-form-field>
+    </div>
+    <div class="edit-form">
+        <button mat-raised-button color="primary" (click)="saveEquipment()">Save</button>
+        <button mat-raised-button color="warn" [disabled]="!currEqp['_id']" (click)="deleteEquipment()">Delete</button>
+    </div>
+    <div>
+        <mat-button-toggle-group class="buttons-list" value="Novo">
+            <mat-button-toggle value="Novo" (change)="selectEquipment({_id: null})">Novo</mat-button-toggle>
+            <div *ngFor="let eqp of eqpList">
+                <mat-button-toggle (change)="selectEquipment(eqp)">{{eqp['name']}}</mat-button-toggle>
+            </div>
+        </mat-button-toggle-group>
+    </div>
+</div>
